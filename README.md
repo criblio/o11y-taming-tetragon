@@ -47,7 +47,7 @@ To install an instance of [Cribl Edge](https://cribl.io/edge/) on your Linux ser
 1. Click Manage Edge.
 2. From the Edge landing page, click [default_fleet](images/edge-default-fleet.png) (free accounts have one Fleet).
 3. In the top-right corner, click [Add/Update Edge Node](images/edge-add-node-dropdown.png). Select [Linux > Add](images/edge-add-linux-node.png).
-4. Copy the command and paste it into your Linux instance.
+4. Copy the [command](images/edge-add-linux-node.png) and paste it into your Linux instance.
 
 
 **NOTE**
@@ -140,7 +140,7 @@ _In production environments, you should leave this enabled._
 2. Select default_fleet. 
 3. Click Fleet Settings > Default TLS Settings in the left nav. 
 4. Toggle Validate server certs switch to No.
-5. Click Commit & Deploy in the top right. 
+5. Click [Commit & Deploy](images/commit-and-deploy.png) in the top right. 
 
 Wait about 30 seconds, then proceed to the next step.
 
@@ -150,7 +150,7 @@ To make the next step easy, we are going to import configurations into Cribl.Clo
 
 ** Do _NOT_ overwrite production configurations with these configs **
 
-As a reminder, you need to Commit & Deploy any changes you make to the configuration before you will see the results reflected in your environment.
+As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any changes you make to the configuration before you will see the results reflected in your environment.
 
 ### Import the Source configuration
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
@@ -187,6 +187,7 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
 }
 ```
 ##### `Commit & Deploy` before moving on to the next section
+![](images/commit-and-deploy.png)
 
 ### Import the Routes configuration
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
