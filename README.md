@@ -4,7 +4,7 @@ The steps below will walk you through setting up Isovalent's Tetragon agent (the
 The commands below assume Ubuntu Linux 22.04 running on an ARM-based processor. Need an Ubuntu virtual machine? [Multipass](https://multipass.run/install ) from Canonical runs on Linux, Windows, and MacOS.
 Starting an Ubuntu instance is as easy as  
 ```
-multipass launch lts -n criblGOAT .
+multipass launch lts -n criblGOAT
 ```
 
 ## Step 1: Update the Ubuntu instance
