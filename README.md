@@ -42,7 +42,7 @@ rm -rf ../tetragon-v1.0.0-arm64.tar.gz
 ## Step 3: Install Cribl Edge
 To install an instance of [Cribl Edge](https://cribl.io/edge/) on your Linux server, log into your [Cribl.Cloud account](https://manage.cribl.cloud/) and follow the steps below:
 
-** Don't have a Cribl Cloud account? [Sign up for a free account](https://cribl.io/cribl-cloud/try-cribl-cloud/) and process 1TB/day of data! **
+**Don't have a Cribl Cloud account? [Sign up for a free account](https://cribl.io/cribl-cloud/try-cribl-cloud/) and process 1TB/day of data!**
 
 1. Click Manage Edge.
 2. From the Edge landing page, click default_fleet (free accounts have one Fleet).
