@@ -1,3 +1,4 @@
+<base target="_blank">
 # Demo Walkthrough
 The steps below will walk you through setting up Isovalent's Tetragon agent (the open source version) and Cribl Edge to collect, transform, and route the Tetragon logs. We will enforce a standard format for Tetragon events, transform, optimize, and route events to a destination, and help you achieve ultimate observability GOAT status!
 
@@ -40,14 +41,14 @@ rm -rf ../tetragon-v1.0.0-arm64.tar.gz
 ```
 
 ## Step 3: Install Cribl Edge
-To install an instance of [Cribl Edge](https://cribl.io/edge/) on your Linux server, log into your [Cribl.Cloud account](https://manage.cribl.cloud/) and follow the steps below:
+To install an instance of [Cribl Edge](https://cribl.io/edge/) on your Linux server, log into your [Cribl.Cloud account](https://manage.cribl.cloud/) and follow the steps below.
 
 **Don't have a Cribl Cloud account? [Sign up for a free account](https://cribl.io/cribl-cloud/try-cribl-cloud/) and process 1TB/day of data!**
 
 1. Click Manage Edge.
-2. From the Edge landing page, click default_fleet (free accounts have one Fleet).
-3. In the top-right corner, click Add/Update Edge Node. Select Linux > Add.
-4. Copy the command and paste it into your Linux instance.
+2. From the Edge landing page, click [default_fleet](images/edge-default-fleet.png) (free accounts have one Fleet).
+3. In the top-right corner, click [Add/Update Edge Node](images/edge-add-node-dropdown.png). Select [Linux > Add](images/edge-add-linux-node.png).
+4. Copy the [command](images/edge-add-linux-node.png) and paste it into your Linux instance.
 
 
 **NOTE**
@@ -136,11 +137,11 @@ This step disables TLS certificate validation and should only be used in a lab e
 
 _In production environments, you should leave this enabled._
 
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
-2. Select default_fleet. 
-3. Click Fleet Settings > Default TLS Settings in the left nav. 
-4. Toggle Validate server certs switch to No.
-5. Click Commit & Deploy in the top right. 
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png) 
+3. Click [Fleet Settings](images/edge-fleet-settings.png) > [Default TLS Settings](images/edge-fleet-default-tls.png) in the left nav 
+4. Toggle Validate server certs switch to No
+5. Click [Commit & Deploy](images/commit-and-deploy.png) in the top right 
 
 Wait about 30 seconds, then proceed to the next step.
 
@@ -150,17 +151,17 @@ To make the next step easy, we are going to import configurations into Cribl.Clo
 
 ** Do _NOT_ overwrite production configurations with these configs **
 
-As a reminder, you need to Commit & Deploy any changes you make to the configuration before you will see the results reflected in your environment.
+As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any changes you make to the configuration before you will see the results reflected in your environment.
 
 ### Import the Source configuration
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
-2. Select default_fleet.
-3. From the *More* menu dropdown, select *Sources*.
-     - If you don't see a `File Monitor` tile, toggle the view from Grid to List and click `Add Source`
-     - If you see a `File Monitor` tile, click the tile and then click `Add Source`
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png)
+3. From the *More* menu dropdown, [select *Sources*](images/edge-sources-dropdown.png)
+     - If you don't see a [`File Monitor`](images/sources-file-monitor.png) tile, toggle the view from Grid to List and click `Add Source`
+     - If you see a [`File Monitor`](images/sources-file-monitor.png) tile, click the tile and then click `Add Source`
 4. In the lower-left corner of the `New Source` screen, click `Manage as JSON`
-5. Copy and paste the source configuration below, over-writing everything in the box.
-6. Click `OK` and then, on the `New Source` config, click `Save`.
+5. Copy and paste the source configuration below, over-writing everything in the box
+6. Click `OK` and then, on the `New Source` config, click `Save`
 
 ```
 {
@@ -186,16 +187,18 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
   "path": "/var/log/tetragon/tetragon.log"
 }
 ```
-##### `Commit & Deploy` before moving on to the next section
+`Commit & Deploy` before moving on to the next section
+
+![](images/commit-and-deploy.png)
 
 ### Import the Routes configuration
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
-2. Select default_fleet.
-3. From the *More* menu dropdown, select *Data Routes*.
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png)
+3. From the *More* menu dropdown, select *Data Routes*
      - There should only be a `default` route. If there are other routes defined, you aren't using a test environment! 
-4. Click the `Manage as JSON` icon to the right of the `Add Route` button
-5. Copy and paste the route configuration below, over-writing everything in the box.
-6. Click `Save`.
+4. Click the [`Manage as JSON`](/images/edge-routes-manage-json.png) icon to the right of the `Add Route` button
+5. Copy and paste the route configuration below, over-writing everything in the box
+6. Click `Save`
 
 ```
 {
@@ -214,7 +217,7 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
       "name": "tetragon-network",
       "final": true,
       "disabled": false,
-      "pipeline": "pack:cc-tetragon-linux",
+      "pipeline": "pack:tetragon-linux",
       "description": "",
       "clones": [],
       "enableOutputExpression": false,
@@ -236,32 +239,36 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
   ]
 }
 ```
-##### `Commit & Deploy` before moving on to the next section
+`Commit & Deploy` before moving on to the next section
+
+![](images/commit-and-deploy.png)
 
 ### Import the Pack
 > [Cribl Packs](https://packs.cribl.io/) allow for the easy distribution of [routes](https://docs.cribl.io/stream/routes/), [pipelines](https://docs.cribl.io/stream/pipelines/), and [knowledge objects](https://docs.cribl.io/stream/packs-standards/#knowledge-objects). In this case, our Pack targets Tetragon agent logs with all the required functions and lookups to parse and enrich the data stream.
 
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
-2. Select default_fleet.
-3. From the *More* menu dropdown, select *Packs*.
-4. Click the `Add Pack` on the right side of the screen and select `Add from Dispensary`.
-5. In the search box, type `tetragon` and click the tile.
-6. Click `Add Pack` to add the contents of the Pack to your environment.
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png)
+3. From the *More* menu dropdown, select *Packs*
+4. Click the [`Add Pack`](images/packs-add-from-dispensary.png) on the right side of the screen and select `Add from Dispensary`
+5. In the search box, type `tetragon` and click the tile
+6. Click `Add Pack` to add the contents of the Pack to your environment
 
-##### `Commit & Deploy` before moving on to the next section
+`Commit & Deploy` before moving on to the next section
+
+![](images/commit-and-deploy.png)
 
 ### Import Destination
 
 This demo uses a New Relic endpoint as the Destination, but you can use any endpoint that accepts logs. Make sure to name the Destination `tetragon-logs` so it matches the imported `route` configuration.
 
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
-2. Select default_fleet.
-3. From the *More* menu dropdown, select *Destinations* and then type `New Relic` in the search box
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png)
+3. From the *More* menu dropdown, select *Destinations* and then type [`New Relic` in the search box](images/edge-destinations-new-relic.png)
    - Not sending to New Relic? Search for your destination by name!
 4. Click the `Logs & Metrics` and then the `Add Destination` button
 5. In the lower-left corner of the `New Destination` screen, click `Manage as JSON`
-6. Copy and paste the destination configuration below, over-writing everything in the box.
-7. Click `OK` and then, on the `New Destination` config, click `Save`.
+6. Copy and paste the destination configuration below, over-writing everything in the box
+7. Click `OK` and then, on the `New Destination` config, click `Save`
    
 *Update the `apiKey` value with a New Relic Ingest key*
 ```
@@ -290,5 +297,7 @@ This demo uses a New Relic endpoint as the Destination, but you can use any endp
   "metadata": []
 }
 ```
-##### `Commit & Deploy` before going to your observability platform of choice to see your Tetragon logs!
+`Commit & Deploy` before going to your observability platform of choice to see your Tetragon logs!
 
+
+![](images/commit-and-deploy.png)
