@@ -17,7 +17,9 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 ## Step 2: Install Tetragon as a Service
-Use the prebuilt `install.sh` script with the commands below. Choose the command for AMD/x86_64 or ARM64.
+Use the prebuilt `install.sh` script with the commands below. You can check out the full installation instructions at the [Tetragon docs website](https://tetragon.io/docs/installation/package/)
+
+Choose the command for AMD/x86_64 or ARM64, as appropriate.
 
 ### For AMD/x86_64
 ```
@@ -38,7 +40,9 @@ rm -rf ../tetragon-v1.0.0-arm64.tar.gz
 ```
 
 ## Step 3: Install Cribl Edge
-To install an instance of Cribl Edge on your Linux server, log into your [Cribl.Cloud account](https://manage.cribl.cloud/) and follow the steps below:
+To install an instance of [Cribl Edge](https://cribl.io/edge/) on your Linux server, log into your [Cribl.Cloud account](https://manage.cribl.cloud/) and follow the steps below:
+
+** Don't have a Cribl Cloud account? [Sign up for a free account](https://cribl.io/cribl-cloud/try-cribl-cloud/) and process 1TB/day of data! **
 
 1. Click Manage Edge.
 2. From the Edge landing page, click default_fleet (free accounts have one Fleet).
@@ -145,6 +149,13 @@ To make the next step easy, we are going to import configurations into Cribl.Clo
 ** Do _NOT_ overwrite production configurations with these configs **
 
 As a reminder, you need to Commit & Deploy any changes you make to the configuration before you will see the results reflected in your environment.
+
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
+2. Select default_fleet.
+3. Fronm the *More* menu dropdown, select *Sources*.
+     If you don't see a `File Monitor` tile, toggle the view from Grid to List and click `Add Source`
+     If you see a `File Monitor` tile, click the tile and then click `Add Source`
+5. 
 
 ### Import the Source configuration
 ```
