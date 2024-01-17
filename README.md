@@ -186,6 +186,7 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
   "path": "/var/log/tetragon/tetragon.log"
 }
 ```
+##### `Commit & Deploy` before moving on to the next section
 
 ### Import the Routes configuration
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
@@ -235,25 +236,34 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
   ]
 }
 ```
+##### `Commit & Deploy` before moving on to the next section
 
 ### Import the Pack
-> (Cribl Packs)[https://packs.cribl.io/] allow for the easy distribution of 
+> [Cribl Packs](https://packs.cribl.io/) allow for the easy distribution of [routes](https://docs.cribl.io/stream/routes/), [pipelines](https://docs.cribl.io/stream/pipelines/), and [knowledge objects](https://docs.cribl.io/stream/packs-standards/#knowledge-objects). In this case, our Pack targets Tetragon agent logs with all the required functions and lookups to parse and enrich the data stream.
 
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
 2. Select default_fleet.
-3. From the *More* menu dropdown, select *Data Routes*.
-     - There should only be a `default` route. If there are other routes defined, you aren't using a test environment! 
-4. Click the `Manage as JSON` icon to the right of the `Add Route` button
-5. Copy and paste the route configuration below, over-writing everything in the box.
-6. Click `Save`.
+3. From the *More* menu dropdown, select *Packs*.
+4. Click the `Add Pack` on the right side of the screen and select `Add from Dispensary`.
+5. In the search box, type `tetragon` and click the tile.
+6. Click `Add Pack` to add the contents of the Pack to your environment.
 
-https://drive.google.com/file/d/109udqW-Qi2yBosaFCqp1Y5lHW8GhlrCy/view?usp=drive_link 
+##### `Commit & Deploy` before moving on to the next section
 
 ### Import Destination
 
-This demo uses a New Relic endpoint as the Destination, but you can use any endpoint that accepts logs. Make sure to name the Destination `tetragon-logs,` so it matches the imported route.json configuration.
+This demo uses a New Relic endpoint as the Destination, but you can use any endpoint that accepts logs. Make sure to name the Destination `tetragon-logs` so it matches the imported `route` configuration.
 
-Update the “apiKey” value with a New Relic Ingest key
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
+2. Select default_fleet.
+3. From the *More* menu dropdown, select *Destinations* and then type `New Relic` in the search box
+   - Not sending to New Relic? Search for your destination by name!
+4. Click the `Logs & Metrics` and then the `Add Destination` button
+5. In the lower-left corner of the `New Destination` screen, click `Manage as JSON`
+6. Copy and paste the destination configuration below, over-writing everything in the box.
+7. Click `OK` and then, on the `New Destination` config, click `Save`.
+   
+*Update the `apiKey` value with a New Relic Ingest key*
 ```
 {
   "id": "tetragon-logs",
@@ -280,5 +290,5 @@ Update the “apiKey” value with a New Relic Ingest key
   "metadata": []
 }
 ```
-
+##### `Commit & Deploy` before going to your observability platform of choice to see your Tetragon logs!
 
