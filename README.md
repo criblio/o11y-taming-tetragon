@@ -132,7 +132,8 @@ sudo cat /var/log/tetragon/tetragon.log | grep -i tcp_connect
 
 ## Step 8: Disable TLS Certificate Validation
 **< WARNING >**  
-This step disables TLS certificate validation and should only be used in a lab environment where self-signed certificates are used. 
+This step disables TLS certificate validation and should only be used in a lab environment where self-signed certificates are used.
+
 _In production environments, you should leave this enabled._
 
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
@@ -146,18 +147,21 @@ Wait about 30 seconds, then proceed to the next step.
 ## Step 9: Import Configurations into Cribl.Cloud
 
 To make the next step easy, we are going to import configurations into Cribl.Cloud. In a production environment, you would build these as part of your overall configurations.
+
 ** Do _NOT_ overwrite production configurations with these configs **
 
 As a reminder, you need to Commit & Deploy any changes you make to the configuration before you will see the results reflected in your environment.
 
+### Import the Source configuration
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
 2. Select default_fleet.
-3. Fronm the *More* menu dropdown, select *Sources*.
-     If you don't see a `File Monitor` tile, toggle the view from Grid to List and click `Add Source`
-     If you see a `File Monitor` tile, click the tile and then click `Add Source`
-5. 
+3. From the *More* menu dropdown, select *Sources*.
+     - If you don't see a `File Monitor` tile, toggle the view from Grid to List and click `Add Source`
+     - If you see a `File Monitor` tile, click the tile and then click `Add Source`
+4. In the lower-left corner of the `New Source` screen, click `Manage as JSON`
+5. Copy and paste the source configuration below, over-writing everything in the box.
+6. Click `OK` and then, on the `New Source` config, click `Save`.
 
-### Import the Source configuration
 ```
 {
   "disabled": false,
@@ -184,6 +188,14 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
 ```
 
 ### Import the Routes configuration
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
+2. Select default_fleet.
+3. From the *More* menu dropdown, select *Data Routes*.
+     - There should only be a `default` route. If there are other routes defined, you aren't using a test environment! 
+4. Click the `Manage as JSON` icon to the right of the `Add Route` button
+5. Copy and paste the route configuration below, over-writing everything in the box.
+6. Click `Save`.
+
 ```
 {
   "id": "default",
@@ -225,6 +237,16 @@ As a reminder, you need to Commit & Deploy any changes you make to the configura
 ```
 
 ### Import the Pack
+> (Cribl Packs)[https://packs.cribl.io/] allow for the easy distribution of 
+
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge.
+2. Select default_fleet.
+3. From the *More* menu dropdown, select *Data Routes*.
+     - There should only be a `default` route. If there are other routes defined, you aren't using a test environment! 
+4. Click the `Manage as JSON` icon to the right of the `Add Route` button
+5. Copy and paste the route configuration below, over-writing everything in the box.
+6. Click `Save`.
+
 https://drive.google.com/file/d/109udqW-Qi2yBosaFCqp1Y5lHW8GhlrCy/view?usp=drive_link 
 
 ### Import Destination
