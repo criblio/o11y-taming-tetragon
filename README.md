@@ -20,7 +20,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 ## Step 2: Install Tetragon as a Service
-Use the prebuilt `install.sh` script with the commands below. You can check out the full installation instructions at the [Tetragon docs website](https://tetragon.io/docs/installation/package/)
+Use the installation instructions at the [Tetragon docs website](https://tetragon.io/docs/installation/package/). The commands below are copied for convenience, but may change. The documentation is the truth!
 
 Choose the command for AMD/x86_64 or ARM64, as appropriate.
 
@@ -225,15 +225,15 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
   "routes": [
     {
       "id": "BLbEiH",
-      "name": "tetragon-network",
+      "name": "tetragon-kprobes",
       "final": true,
       "disabled": false,
-      "pipeline": "pack:cribl-tetragon-linux",
-      "description": "",
+      "pipeline": "pack:cribl-isovalent-linux",
+      "description": "Route only BPF events that describe process actions (eg process_kprobes, process_exec, etc.)",
       "clones": [],
       "enableOutputExpression": false,
-      "filter": "Object.keys(JSON.parse(_raw))[0] == ('process_kprobe')",
-      "output": "devnull"
+      "filter": "(Object.keys(JSON.parse(_raw))[0]).startsWith('process_')",
+      "output": "tetragon-logs"
     },
     {
       "id": "default",
