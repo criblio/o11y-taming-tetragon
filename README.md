@@ -188,6 +188,7 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
   ]
 }
 ```
+
 `Commit & Deploy` before moving on to the next section
 
 ![](images/commit-and-deploy.png)
@@ -205,6 +206,53 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
 `Commit & Deploy` before moving on to the next section
 
 ![](images/commit-and-deploy.png)
+
+
+### Import Destination
+
+This demo uses a New Relic endpoint as the Destination, but you can use any endpoint that accepts logs. Make sure to name the Destination `tetragon-logs` so it matches the imported `route` configuration.
+
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png)
+3. From the *More* menu dropdown, select *Destinations* and then type [`New Relic` in the search box](images/edge-destinations-new-relic.png)
+   - Not sending to New Relic? Search for your destination by name!
+4. Click the `Logs & Metrics` and then the `Add Destination` button
+5. In the lower-left corner of the `New Destination` screen, click `Manage as JSON`
+6. Copy and paste the destination configuration below, over-writing everything in the box
+7. Click `OK` and then, on the `New Destination` config, click `Save`
+   
+*Update the `apiKey` value with a New Relic Ingest key*
+```
+{
+  "id": "tetragon-logs",
+  "systemFields": [
+    "cribl_pipe"
+  ],
+  "streamtags": [],
+  "region": "US",
+  "logType": "tetragon-linux",
+  "concurrency": 5,
+  "maxPayloadSizeKB": 1024,
+  "maxPayloadEvents": 0,
+  "compress": true,
+  "rejectUnauthorized": true,
+  "timeoutSec": 30,
+  "flushPeriodSec": 1,
+  "useRoundRobinDns": false,
+  "failedRequestLoggingMode": "none",
+  "safeHeaders": [],
+  "onBackpressure": "block",
+  "authType": "manual",
+  "type": "newrelic",
+  "apiKey": "YOUR_KEY_HERE",
+  "metadata": []
+}
+```
+
+`Commit & Deploy` before moving on to the next section
+
+![](images/commit-and-deploy.png)
+
 
 ### Import the Routes configuration
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
@@ -254,51 +302,10 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
   ]
 }
 ```
-`Commit & Deploy` before moving on to the next section
 
-![](images/commit-and-deploy.png)
 
-### Import Destination
-
-This demo uses a New Relic endpoint as the Destination, but you can use any endpoint that accepts logs. Make sure to name the Destination `tetragon-logs` so it matches the imported `route` configuration.
-
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
-2. Select [default_fleet](images/edge-default-fleet.png)
-3. From the *More* menu dropdown, select *Destinations* and then type [`New Relic` in the search box](images/edge-destinations-new-relic.png)
-   - Not sending to New Relic? Search for your destination by name!
-4. Click the `Logs & Metrics` and then the `Add Destination` button
-5. In the lower-left corner of the `New Destination` screen, click `Manage as JSON`
-6. Copy and paste the destination configuration below, over-writing everything in the box
-7. Click `OK` and then, on the `New Destination` config, click `Save`
-   
-*Update the `apiKey` value with a New Relic Ingest key*
-```
-{
-  "id": "tetragon-logs",
-  "systemFields": [
-    "cribl_pipe"
-  ],
-  "streamtags": [],
-  "region": "US",
-  "logType": "tetragon-linux",
-  "concurrency": 5,
-  "maxPayloadSizeKB": 1024,
-  "maxPayloadEvents": 0,
-  "compress": true,
-  "rejectUnauthorized": true,
-  "timeoutSec": 30,
-  "flushPeriodSec": 1,
-  "useRoundRobinDns": false,
-  "failedRequestLoggingMode": "none",
-  "safeHeaders": [],
-  "onBackpressure": "block",
-  "authType": "manual",
-  "type": "newrelic",
-  "apiKey": "YOUR_KEY_HERE",
-  "metadata": []
-}
-```
 `Commit & Deploy` before going to your observability platform of choice to see your Tetragon logs!
 
-
 ![](images/commit-and-deploy.png)
+
+
