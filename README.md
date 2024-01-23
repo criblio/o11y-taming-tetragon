@@ -231,6 +231,7 @@ This demo uses a New Relic endpoint as the Destination, but you can use any endp
   "streamtags": [],
   "region": "US",
   "logType": "tetragon-linux",
+  "messageField": "",
   "concurrency": 5,
   "maxPayloadSizeKB": 1024,
   "maxPayloadEvents": 0,
@@ -244,7 +245,7 @@ This demo uses a New Relic endpoint as the Destination, but you can use any endp
   "onBackpressure": "block",
   "authType": "manual",
   "type": "newrelic",
-  "apiKey": "YOUR_KEY_HERE",
+  "apiKey": "INGEST-KEY-HERE",
   "metadata": []
 }
 ```
