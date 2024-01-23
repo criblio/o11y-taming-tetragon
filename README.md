@@ -122,15 +122,10 @@ sudo systemctl restart tetragon
 
 ## Step 7: Verify our work so far
 After restarting the tetragon service, verify the policy worked by running the following commands.
+The `sudo ... | grep` returns JSON objects containing `"function_name":"tcp_connect"` if Tetragon is working correctly.
 ```
-sudo systemctl restart tetragon
-pause 5
 wget google.com
-```
-
-- Returns JSON objects containing `"function_name":"tcp_connect"` after running the previous commands.
-```
-sudo cat /var/log/tetragon/tetragon.log | grep -i tcp_connect
+sudo grep -i --color=always 'google.com' /var/log/tetragon/tetragon.log | grep -i --color=always 'tcp_connect'
 ```
 
 ## Step 8: Disable TLS Certificate Validation
