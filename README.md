@@ -188,6 +188,20 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
 
 ![](images/commit-and-deploy.png)
 
+### Import the Pack
+> [Cribl Packs](https://packs.cribl.io/) allow for the easy distribution of [routes](https://docs.cribl.io/stream/routes/), [pipelines](https://docs.cribl.io/stream/pipelines/), and [knowledge objects](https://docs.cribl.io/stream/packs-standards/#knowledge-objects). In this case, our Pack targets Tetragon agent logs with all the required functions and lookups to parse and enrich the data stream.
+
+1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
+2. Select [default_fleet](images/edge-default-fleet.png)
+3. From the *More* menu dropdown, select *Packs*
+4. Click the [`Add Pack`](images/packs-add-from-dispensary.png) on the right side of the screen and select `Add from Dispensary`
+5. In the search box, type `tetragon` and click the tile
+6. Click `Add Pack` to add the contents of the Pack to your environment
+
+`Commit & Deploy` before moving on to the next section
+
+![](images/commit-and-deploy.png)
+
 ### Import the Routes configuration
 1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
 2. Select [default_fleet](images/edge-default-fleet.png)
@@ -214,7 +228,7 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
       "name": "tetragon-network",
       "final": true,
       "disabled": false,
-      "pipeline": "pack:tetragon-linux",
+      "pipeline": "pack:cribl-tetragon-linux",
       "description": "",
       "clones": [],
       "enableOutputExpression": false,
@@ -236,20 +250,6 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
   ]
 }
 ```
-`Commit & Deploy` before moving on to the next section
-
-![](images/commit-and-deploy.png)
-
-### Import the Pack
-> [Cribl Packs](https://packs.cribl.io/) allow for the easy distribution of [routes](https://docs.cribl.io/stream/routes/), [pipelines](https://docs.cribl.io/stream/pipelines/), and [knowledge objects](https://docs.cribl.io/stream/packs-standards/#knowledge-objects). In this case, our Pack targets Tetragon agent logs with all the required functions and lookups to parse and enrich the data stream.
-
-1. Navigate to [Cribl.Cloud](https://manage.cribl.cloud/) > Manage Edge
-2. Select [default_fleet](images/edge-default-fleet.png)
-3. From the *More* menu dropdown, select *Packs*
-4. Click the [`Add Pack`](images/packs-add-from-dispensary.png) on the right side of the screen and select `Add from Dispensary`
-5. In the search box, type `tetragon` and click the tile
-6. Click `Add Pack` to add the contents of the Pack to your environment
-
 `Commit & Deploy` before moving on to the next section
 
 ![](images/commit-and-deploy.png)
