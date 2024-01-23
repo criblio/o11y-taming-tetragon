@@ -162,7 +162,7 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
 
 ```
 {
-  "id": "tetragon_linux",
+  "id": "tetragon-logs",
   "disabled": false,
   "sendToRoutes": true,
   "pqEnabled": false,
@@ -186,7 +186,8 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
   "connections": [
     {}
   ]
-}```
+}
+```
 `Commit & Deploy` before moving on to the next section
 
 ![](images/commit-and-deploy.png)
