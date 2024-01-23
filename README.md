@@ -162,6 +162,7 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
 
 ```
 {
+  "id": "tetragon_linux",
   "disabled": false,
   "sendToRoutes": true,
   "pqEnabled": false,
@@ -179,11 +180,13 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
   "hashLen": 256,
   "staleChannelFlushMs": 10000,
   "includeUnidentifiableBinary": false,
-  "id": "tetragon_linux",
   "type": "file",
-  "path": "/var/log/tetragon/tetragon.log"
-}
-```
+  "breakerRulesets": [],
+  "path": "/var/log/tetragon/tetragon.log",
+  "connections": [
+    {}
+  ]
+}```
 `Commit & Deploy` before moving on to the next section
 
 ![](images/commit-and-deploy.png)
