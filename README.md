@@ -52,12 +52,13 @@ To install an instance of [Cribl Edge](https://cribl.io/edge/) on your Linux ser
 3. In the top-right corner, click [Add/Update Edge Node](images/edge-add-node-dropdown.png). Select [Linux > Add](images/edge-add-linux-node.png).
 4. Copy the [command](images/edge-add-linux-node.png) and paste it into your Linux instance.
 
-
 **NOTE**
 If you are not logged in as root, you will need to add `sudo` to the command after the `|` in the `| bash -` part of the commands as in the example below.
 ```
 curl 'https://[YOUR_INSTANCE_NAME].cribl.cloud/init/install-edge.sh?group=default_fleet&token=[YOUR_LEADER_TOKEN]&user=cribl&install_dir=%2Fopt%2Fcribl' | sudo bash -
 ```
+For more details on installing and managing Cribl Edge, review the [Installing Cribl Edge on Linux](https://docs.cribl.io/edge/deploy-single-instance/) documentation.
+
 
 ### Step 4: Change the Group and Update Permissions
 >NOTE
