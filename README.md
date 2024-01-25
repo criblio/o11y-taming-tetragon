@@ -204,6 +204,8 @@ As a reminder, you need to [Commit & Deploy](images/commit-and-deploy.png) any c
 5. In the search box, type `tetragon` and click the tile
 6. Click `Add Pack` to add the contents of the Pack to your environment
 
+> If you want to download the `.crbl` file directly, you can go to the [Dispensary website](https://packs.cribl.io/?query=tetragon) and see all the pack details, including the option to download.
+
 `Commit & Deploy` before moving on to the next section
 
 ![](images/commit-and-deploy.png)
